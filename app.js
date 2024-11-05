@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
-
+const cors = require('cors')
 const taxData = require('./taxdata.json')
 
 const PORT = 3001
 
+app.use(cors())
 app.use(express.json())
 
 app.get("/", (req, res) => {
@@ -44,7 +45,7 @@ app.post("/getTaxRate", requireState, (req, res) => {
 
     const response = {
         "state": state,
-        "rate": taxRate
+        "taxRate": taxRate
     }
     res.status(200).send(response)
 })
@@ -83,7 +84,7 @@ app.post("/getTotalPurchasePrice", requireState, requireAmount, (req, res) => {
     const response = {
         "state": state,
         "amount": amount,
-        "taxAmount": amount + (amount * taxRate)
+        "totalPrice": amount + (amount * taxRate)
     }
     res.status(200).send(response)
 })
