@@ -38,10 +38,10 @@ app.post("/getTaxRate", requireState, (req, res) => {
         res.status(404).send({
             'message': `Could not find data for state : ${state}`,
             "requestBody": req.body
-        }
-        )
+        })
+        return
     }
-    console.log(taxRate)
+
     const response = {
         "state": state,
         "rate": taxRate
@@ -57,8 +57,8 @@ app.post("/getTaxAmount", requireState, requireAmount, (req, res) => {
         res.status(404).send({
             'message': `Could not find data for state : ${state}`,
             "requestBody": req.body
-        }
-        )
+        })
+        return
     }
     const response = {
         "state": state,
@@ -77,8 +77,8 @@ app.post("/getTotalPurchasePrice", requireState, requireAmount, (req, res) => {
         res.status(404).send({
             'message': `Could not find data for state : ${state}`,
             "requestBody": req.body
-        }
-        )
+        })
+        return
     }
     const response = {
         "state": state,
