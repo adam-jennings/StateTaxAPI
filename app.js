@@ -84,7 +84,9 @@ app.post("/getTotalPurchasePrice", requireState, requireAmount, (req, res) => {
     const response = {
         "state": state,
         "amount": amount,
-        "totalPrice": amount + (amount * taxRate)
+        "totalPrice": amount + (amount * taxRate),
+        "taxAmount": amount * taxRate,
+        "taxRate": taxRate
     }
     res.status(200).send(response)
 })
