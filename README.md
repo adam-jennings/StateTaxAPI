@@ -1,3 +1,6 @@
+```mermaid
 sequenceDiagram
-    Requester->>StateTaxAPI: /getTotalPurchasePrice {state, amount}
-    StateTaxAPI-->>{state,amount, taxRate, taxAmount, totalPrice}
+    Requester->>StateTaxAPI: POST /getTotalPurchasePrice {state,amount}
+    StateTaxAPI-->>Requester: {state,amount, taxRate, taxAmount, totalPrice}
+
+```
