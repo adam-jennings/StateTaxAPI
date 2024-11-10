@@ -25,7 +25,8 @@ python example request:
 import requests
 
 #Make POST request with appropriate data payload
-response = requests.post('https://statetaxapi.onrender.com/getTaxRate', json = {'state': 'OR'})
+response = requests.post('https://statetaxapi.onrender.com/getTaxRate',
+  json = {'state': 'OR'})
 
 print(response.json()) # print out the entirety of the response as JSON
 print (f"Tax Rate  : {response.json()['taxRate']} ") # Access taxRate from JSON response 
@@ -51,7 +52,8 @@ python example request:
 import requests
 
 #Make POST request with appropriate data payload
-response = requests.post('https://statetaxapi.onrender.com/getTaxAmount', json = {'state': 'CA','amount':1.5})
+response = requests.post('https://statetaxapi.onrender.com/getTaxAmount',
+  json = {'state': 'CA','amount':1.5})
 
 print(response.json()) # print out the entirety of the response as JSON
 print (f"Tax Rate  : {response.json()['taxAmount']} ") # Access taxAmount from JSON response 
@@ -79,7 +81,8 @@ python example request:
 import requests
 
 #Make POST request with appropriate data payload
-response = requests.post('https://statetaxapi.onrender.com/getTotalPurchasePrice', json = {'state': 'WA','amount':1.5})
+response = requests.post('https://statetaxapi.onrender.com/getTotalPurchasePrice',
+  json = {'state': 'WA','amount':1.5})
 
 print(response.json()) # print out the entirety of the response as JSON
 print (f"Total Price : {response.json()['totalPrice']} ") # Access totalPrice from JSON response 
