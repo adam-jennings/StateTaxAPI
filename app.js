@@ -32,8 +32,10 @@ const requireAmount = (req, res, next) => {
 }
 
 app.post("/getTaxRate", requireState, (req, res) => {
-    const state = req.body.state
-    const amount = req.body.amount
+    console.log('received getTaxRate request')
+    console.log(`Request body : ${JSON.stringify(req.body)}`)
+    const state = req.body.state.toUpperCase()
+    const amount = Number(req.body.amount)
     const taxRate = taxData[state]
     if (taxRate === undefined) {
         res.status(404).send({
@@ -47,12 +49,15 @@ app.post("/getTaxRate", requireState, (req, res) => {
         "state": state,
         "taxRate": taxRate
     }
+    console.log(`Sending Response : ${JSON.stringify(response)}\n`)
     res.status(200).send(response)
 })
 
 app.post("/getTaxAmount", requireState, requireAmount, (req, res) => {
-    const state = req.body.state
-    const amount = req.body.amount
+    console.log('received getTaxAmount request')
+    console.log(`Request body : ${JSON.stringify(req.body)}`)
+    const state = req.body.state.toUpperCase()
+    const amount = Number(req.body.amount)
     const taxRate = taxData[state]
     if (taxRate === undefined) {
         res.status(404).send({
@@ -66,12 +71,15 @@ app.post("/getTaxAmount", requireState, requireAmount, (req, res) => {
         "amount": amount,
         "taxAmount": amount * taxRate
     }
+    console.log(`Sending Response : ${JSON.stringify(response)}\n`)
     res.status(200).send(response)
 })
 
 app.post("/getTotalPurchasePrice", requireState, requireAmount, (req, res) => {
-    const state = req.body.state
-    const amount = req.body.amount
+    console.log('received getTotalPurchasePrice request')
+    console.log(`Request body : ${JSON.stringify(req.body)}`)
+    const state = req.body.state.toUpperCase()
+    const amount = Number(req.body.amount)
 
     const taxRate = taxData[state]
     if (taxRate === undefined) {
@@ -88,6 +96,7 @@ app.post("/getTotalPurchasePrice", requireState, requireAmount, (req, res) => {
         "taxAmount": amount * taxRate,
         "taxRate": taxRate
     }
+    console.log(`Sending Response : ${JSON.stringify(response)}\n`)
     res.status(200).send(response)
 })
 
